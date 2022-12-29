@@ -1,0 +1,19 @@
+.outside {
+    width: calc(100% - 56px);
+    height: calc(100% - 56px);
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin: 28px;
+    border: 2px solid;
+}
+
+.inside {
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin: 12px;
+    border: 1px solid;
+}

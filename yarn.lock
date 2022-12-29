@@ -1074,6 +1074,16 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/montserrat@^4.5.13":
+  version "4.5.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.13.tgz#58f12419c05e131b09ab17e9181aa24fb9c84b3a"
+  integrity sha512-/XlcNsMFjdWX4Away8Ax/4NgND8Ckk9gVDwgz1sfxF6h+gFHChLOV0IvPrUfCQjZ1F35igg+nR9bSxmjsYEskQ==
+
+"@fontsource/tangerine@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/tangerine/-/tangerine-4.5.9.tgz#5fe9120cccf6b7d3737978ac907f85cae0542356"
+  integrity sha512-lKpSUdMXfMKtIyU7AJKLFftV7A5bOw1F5bMVHpqf+FnDQFY2q+yt8+YS+eVWCCtL/aB8XHWsSDEzdNCU1G6EUQ==
+
 "@gatsbyjs/parcel-namer-relative-to-cwd@2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-2.3.1.tgz#44779296e2b2f5e5d1fb6ce40a7661647d65f6fc"

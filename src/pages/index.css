@@ -1,0 +1,87 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    background-color: #262626;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: #000000;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    body {
+        background-color: #FFFFFF;
+    }
+}
+
+h1 {
+    font-family: "Tangerine", cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+h2 {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: "Tangerine", cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 28px;
+}
