@@ -8,7 +8,6 @@ type Props = {
     format: 'a4'|'card',
 }
 const Paper = ({ children, color, format }: Props) => {
-
     return (
       <main className={main}>
           <article className={format === 'a4' ? a4Paper : cardPaper}>
