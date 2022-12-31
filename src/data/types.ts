@@ -70,12 +70,19 @@ export type Lien = {
   Suite: TypeSuite,
 }
 export type Menu = {
-  Menu: string,
+  Nom: string,
+}
+export type Complement = {
+  Nom: string,
 }
 
 export type MenuNode = {
   recordId: string,
   data: Menu,
+}
+export type ComplementNode = {
+  recordId: string,
+  data: Complement,
 }
 export type PlatNode = {
   recordId: string,
@@ -104,6 +111,9 @@ export type LienNode = {
 export type MenuEdge = {
   node: MenuNode,
 }
+export type ComplementEdge = {
+  node: ComplementNode,
+}
 export type PlatEdge = {
   node: PlatNode,
 }
@@ -125,6 +135,9 @@ export type LienEdge = {
 export type MenuEdges = {
   edges: MenuEdge[],
 }
+export type ComplementEdges = {
+  edges: ComplementEdge[],
+}
 export type PlatEdges = {
   edges: PlatEdge[],
 }
@@ -145,6 +158,7 @@ export type LienEdges = {
 }
 export type DataType = {
   menu: MenuEdges,
+  complement: ComplementEdges,
   plat:  PlatEdges,
   ingredient: IngredientEdges,
   adjectif: AdjectifEdges,

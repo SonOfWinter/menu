@@ -45,6 +45,10 @@ const config: GatsbyConfig = {
           {
             baseId: process.env.AIRTABLE_BASE_ID,
             tableName: `Menu`
+          },
+          {
+            baseId: process.env.AIRTABLE_BASE_ID,
+            tableName: `Complement`
           }
         ]
       }

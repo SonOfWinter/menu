@@ -1,22 +1,34 @@
 import React from 'react';
+import _ from 'lodash';
 import Border from './border';
 import { main, content, menuTitle, list, cardPaper, cardPrice, a4Paper, a4Price } from './paper.module.css'
+import {
+    ComplementEdge,
+    MenuEdge,
+} from '../data/types';
 
 type Props = {
     children: React.ReactElement | React.ReactElement[],
     color: string,
     format: 'a4'|'card',
+    menuList: MenuEdge[],
+    complementList: ComplementEdge[]
 }
-const Paper = ({ children, color, format }: Props) => {
+const Paper = ({ children, color, format, menuList, complementList }: Props) => {
+
+    const randomMenuTitle: MenuEdge = menuList[_.random(0, menuList.length - 1)];
+    const randomComplementTitle: ComplementEdge = complementList[_.random(0, complementList.length - 1)];
     return (
       <main className={main}>
           <article className={format === 'a4' ? a4Paper : cardPaper}>
               <Border color={color}>
                   <div className={content}>
                       <div className={menuTitle}>
-                          <h1 style={{ color: color }}>Menu de la mer</h1>
-                          <h2>Seulement le midi</h2>
-                          <p className={format === 'a4' ? a4Price : cardPrice}>175,02€</p>
+                          <h1 style={{ color: color }}>{randomMenuTitle.node.data.Nom}</h1>
+                          <h2>{randomComplementTitle.node.data.Nom}</h2>
+                          <p className={format === 'a4' ? a4Price : cardPrice}>
+                              {`${_.round(_.random(60.0, 250.0, true), 2)}€`}
+                          </p>
                       </div>
                       <div className={list}>
                           {children}

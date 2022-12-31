@@ -9,7 +9,12 @@ import { DataType } from '../data/types';
 const IndexPage: React.FC<PageProps> = ({data}) => {
   const mainColor = "#CF9A39";
   return (
-    <Paper color={mainColor} format="card">
+    <Paper
+      color={mainColor}
+      format="card"
+      menuList={data.menu.edges}
+      complementList={data.complement.edges}
+    >
 
       <MenuSection
         color={mainColor}
@@ -40,6 +45,20 @@ export const query = graphql`
         menu: allAirtable(
             filter: {
                 table: { eq: "Menu" }
+            }
+        ) {
+            edges {
+                node {
+                    recordId
+                    data {
+                        Nom
+                    }
+                }
+            }
+        }
+        complement: allAirtable(
+            filter: {
+                table: { eq: "Complement" }
             }
         ) {
             edges {
