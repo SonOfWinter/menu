@@ -34,7 +34,7 @@ const getAdjectifBasedOnIngredient = (adjectifEdges: AdjectifEdge[], ingredient:
     _.intersection(
       item.node.data.Types,
       ingredient.node.data.Types,
-    ),
+    ).length > 0,
   );
   return adjectifsSecondaires[_.random(0, adjectifsSecondaires.length - 1)];
 }
