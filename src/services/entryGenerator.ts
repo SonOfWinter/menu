@@ -30,13 +30,13 @@ export const generate = (data: DataType, mainType: TypePlat): string[] => {
 }
 
 const getAdjectifBasedOnIngredient = (adjectifEdges: AdjectifEdge[], ingredient: IngredientEdge): AdjectifEdge => {
-  const adjectifsSecondaires = adjectifEdges.filter((item: AdjectifEdge) =>
+  const adjectifs = adjectifEdges.filter((item: AdjectifEdge) =>
     _.intersection(
       item.node.data.Types,
       ingredient.node.data.Types,
     ).length > 0,
   );
-  return adjectifsSecondaires[_.random(0, adjectifsSecondaires.length - 1)];
+  return adjectifs[_.random(0, adjectifs.length - 1)];
 }
 
 const getPlatByType = (platEdges: PlatEdge[], mainType: TypePlat): PlatEdge => {
@@ -90,7 +90,6 @@ const generateSecond = (data: DataType, platPrincipal: PlatEdge, ingredients: In
   // @ts-ignore
   const preIngredient: string = ingredientSecondaire.node.data[tmpArrayKey];
   const adjectifSecondaire: AdjectifEdge = getAdjectifBasedOnIngredient(data.adjectif.edges, ingredientSecondaire);
-
   // @ts-ignore
   second += lienSecondaire.node.data[nameDrivedByPlat];
   second += ' ';
