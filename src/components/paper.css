@@ -6,15 +6,6 @@
     box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.75);
-    @media print {
-        overflow: hidden;
-        width: 210mm;
-        height: 297mm;
-        padding: 0;
-        margin: 0;
-        top: 0;
-        left: 0;
-    }
 }
 
 .content {
@@ -23,6 +14,7 @@
     gap: 60px;
     height: 100%;
     margin-top: 84px;
+    padding: 10px
 }
 .list {
     display: flex;
@@ -47,13 +39,6 @@
     position: relative;
     width: 565.66px;
     height: 800px;
-    @media print {
-        margin: 0;
-        width: 210mm;
-        height: 297mm;
-        top: 0;
-        left: 0;
-    }
 }
 
 
@@ -77,13 +62,6 @@
     position: relative;
     width: 210mm;
     height: 297mm;
-    @media print {
-        margin: 0;
-        width: 210mm;
-        height: 297mm;
-        top: 0;
-        left: 0;
-    }
 }
 
 .a4Price {
@@ -94,4 +72,59 @@
     text-align: center;
     opacity: 0.6;
 
+}
+
+@media print {
+    .main {
+        overflow: hidden;
+        width: 210mm;
+        height: 297mm;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+    }
+    .cardPaper {
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+        top: 0;
+        left: 0;
+    }
+    .a4Paper {
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 565.66px) {
+    #gatsby-focus-wrapper {
+        height: 100vh;
+        overflow-y: scroll;
+    }
+    .main {
+        overflow: auto;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+    }
+    .cardPaper {
+        margin: 0;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    .a4Paper {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+    }
 }
