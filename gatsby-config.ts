@@ -4,8 +4,8 @@ require("dotenv").config({
 })
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Menu`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Menu gastrorandomique`,
+    siteUrl: `https://generateurmenugastronomique.gatsbyjs.io`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
