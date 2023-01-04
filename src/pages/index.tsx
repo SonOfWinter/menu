@@ -5,6 +5,7 @@ import './index.css'
 import MenuSection from '../components/menuSection';
 import Paper from '../components/paper';
 import { DataType } from '../data/types';
+import Seo from '../components/seo';
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   const mainColor = "#CF9A39";
@@ -183,4 +184,4 @@ export const query = graphql`
 `
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Menu</title>
+export const Head: HeadFC = () => <Seo />
