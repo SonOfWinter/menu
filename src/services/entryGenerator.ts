@@ -11,6 +11,10 @@ import {
 
 const _ = require('lodash');
 
+const alreadyUsed: {ingredients: string[], adjectifs: string[]} = {
+  ingredients: [],
+  adjectifs: [],
+};
 export const generate = (data: DataType, mainType: TypePlat): string[] => {
 
   const platPrincipal: PlatEdge = getPlatByType(data.plat.edges, mainType);
@@ -22,7 +26,6 @@ export const generate = (data: DataType, mainType: TypePlat): string[] => {
       platPrincipal.node.data[_.capitalize(mainType)],
     ).length > 0,
   );
-
   return [
     generateMain(data, platPrincipal, ingredients),
     generateSecond(data, platPrincipal, ingredients),
@@ -34,9 +37,21 @@ const getAdjectifBasedOnIngredient = (adjectifEdges: AdjectifEdge[], ingredient:
     _.intersection(
       item.node.data.Types,
       ingredient.node.data.Types,
-    ).length > 0,
+    ).length > 0
+    && !alreadyUsed.adjectifs.includes(item.node.data.Nom_M_S),
   );
-  return adjectifs[_.random(0, adjectifs.length - 1)];
+  const selected = adjectifs[_.random(0, adjectifs.length - 1)];
+  alreadyUsed.adjectifs.push(selected.node.data.Nom_M_S);
+  return selected;
+}
+
+const getIngredient = (ingredients: IngredientEdge[]): IngredientEdge => {
+  const filteredIngredients: IngredientEdge[] = ingredients.filter((item: IngredientEdge) =>
+    !alreadyUsed.ingredients.includes(item.node.data.Nom)
+  );
+  const selected = filteredIngredients[_.random(0, filteredIngredients.length - 1)];
+  alreadyUsed.ingredients.push(selected.node.data.Nom);
+  return selected;
 }
 
 const getPlatByType = (platEdges: PlatEdge[], mainType: TypePlat): PlatEdge => {
@@ -49,7 +64,7 @@ const getPlatByType = (platEdges: PlatEdge[], mainType: TypePlat): PlatEdge => {
 
 const generateMain = (data: DataType, platPrincipal: PlatEdge, ingredients: IngredientEdge[]): string => {
   let main: string = '';
-  const ingredientPrincipal: IngredientEdge = ingredients[_.random(0, ingredients.length - 1)];
+  const ingredientPrincipal: IngredientEdge = getIngredient(ingredients);
   const nameDrivedByIngredientPrincipal = `Nom_${ingredientPrincipal.node.data.Genre}_${ingredientPrincipal.node.data.Nombre}`;
   const adjectifPrincipal: AdjectifEdge = getAdjectifBasedOnIngredient(data.adjectif.edges, ingredientPrincipal);
   const nameDrivedByPlat = `Nom_${platPrincipal.node.data.Genre}_${platPrincipal.node.data.Nombre}`;
@@ -79,11 +94,10 @@ const generateMain = (data: DataType, platPrincipal: PlatEdge, ingredients: Ingr
 }
 
 const generateSecond = (data: DataType, platPrincipal: PlatEdge, ingredients: IngredientEdge[]): string => {
-
   let second: string = '';
   const nameDrivedByPlat = `Nom_${platPrincipal.node.data.Genre}_${platPrincipal.node.data.Nombre}`;
   const lienSecondaire: LienEdge = data.lien.edges[_.random(0, data.lien.edges.length - 1)];
-  const ingredientSecondaire: IngredientEdge = ingredients[_.random(0, ingredients.length - 1)];
+  const ingredientSecondaire: IngredientEdge = getIngredient(ingredients);
   const nameDrivedByIngredientSecondaire = `Nom_${ingredientSecondaire.node.data.Genre}_${ingredientSecondaire.node.data.Nombre}`;
   const tmpArrayKey: string = lienSecondaire.node.data.Suite[0].toUpperCase()
     + lienSecondaire.node.data.Suite.substr(1);
