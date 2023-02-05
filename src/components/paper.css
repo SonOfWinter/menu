@@ -2,10 +2,16 @@
     width: 100vw;
     height: 100vh;
     position: relative;
-    overflow: auto;
-    box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.9);
     -webkit-box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 41px 16px rgba(0,0,0,0.75);
+    perspective: 1000px;
+    /* https://pixabay.com/fr/photos/couvrir-plaque-coutellerie-1589427/ */
+    background-image: url("../images/food-g7e5af6851_1920.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 
 .content {
@@ -28,6 +34,21 @@
     gap: 8px;
 
 }
+.blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* From https://css.glass */
+    transition: background 1s ease-in-out, backdrop-filter 1s ease-in-out, -webkit-backdrop-filter 1s ease-in-out;
+}
+
+.main:has(.cardPaper:hover) > .blur {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+}
 
 .cardPaper {
     overflow: hidden;
@@ -37,10 +58,16 @@
     background-color: white;
     margin: 100px auto;
     position: relative;
-    width: 565.66px;
+    width: 35%;
     height: 800px;
+    transform: scale(0.9) rotateX(8deg) rotateZ(-13deg) rotateY(5deg);
+    transition: transform 1s ease-in-out;
 }
 
+
+.cardPaper:hover {
+    transform: unset;
+}
 
 .cardPrice {
     font-style: normal;
@@ -100,6 +127,29 @@
     }
 }
 
+@media screen and (min-width: 1500px) {
+    .cardPaper {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .cardPaper {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .cardPaper {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .cardPaper {
+        width: 65%;
+    }
+}
 @media screen and (max-width: 565.66px) {
     #gatsby-focus-wrapper {
         height: 100vh;
@@ -113,12 +163,15 @@
         margin: 0;
         top: 0;
         left: 0;
+        background-image: unset;
     }
     .cardPaper {
         margin: 0;
         width: 100%;
         top: 0;
         left: 0;
+        transform: unset;
+        transition: unset;
     }
     .a4Paper {
         margin: 0;
@@ -126,5 +179,11 @@
         height: auto;
         top: 0;
         left: 0;
+    }
+
+    .main:has(.cardPaper:hover) > .blur {
+        background: unset;
+        backdrop-filter: unset;
+        -webkit-backdrop-filter: unset;
     }
 }

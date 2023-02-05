@@ -20,6 +20,7 @@ const Paper = ({ children, color, format, menuList, complementList }: Props) => 
     const randomComplementTitle: ComplementEdge = complementList[_.random(0, complementList.length - 1)];
     return (
       <main className="main">
+          <div className="blur" />
           <article className={format === 'a4' ? 'a4Paper' : 'cardPaper'}>
               <Border color={color}>
                   <div className="content">
